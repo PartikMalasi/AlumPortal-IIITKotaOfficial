@@ -9,7 +9,7 @@ const Home = () => {
 			<CarouselHome />
 			<InfiniteText />
 			{/* Benifits Offered  */}
-			<div className="w-full h-auto border border-black">
+			<div className="w-full h-auto">
 				<h1 className="text-center text-3xl font-semibold my-8">
 					Benifits Offered
 				</h1>
