@@ -40,8 +40,8 @@ const topLayer = () => {
           style={{ fontSize: "1.2rem" }}
         />
         <p className="text-white text-sm">
-          <span className="hover:underline hover:cursor-pointer">Login</span> /{" "}
-          <span className="hover:underline hover:cursor-pointer">Register</span>
+          <a href="/signin"><span className="hover:underline hover:cursor-pointer">Login</span></a> /{" "}
+          <a href="https://alumni-form-one.vercel.app/"><span className="hover:underline hover:cursor-pointer">Register</span></a>
         </p>
       </div>
     </div>
