@@ -41,7 +41,62 @@ const Home = () => {
 			<Navbar />
 			<CarouselHome />
 			<InfiniteText />
-			{/* Benefits Offered */}
+			{/* About Us */}
+			<div className="w-full h-auto py-8 flex flex-col justify-center items-center">
+				<p className=" w-[90%] lg:w-[80%] h-[3rem] text-2xl lg:text-3xl text-[#19194D] mb-4">
+					About Alumni Cell, IIIT Kota
+				</p>
+				<p className=" w-[90%] lg:w-[80%] h-auto py-2 text-sm lg:text-lg mb-4">
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
+					eum pariatur voluptas. Ullam minus repellat recusandae. Aliquam sunt
+					omnis facere expedita temporibus nam quos? Facere, et quidem
+					reprehenderit asperiores ut eaque nesciunt amet harum velit odio cum
+					impedit maxime incidunt animi aliquam numquam odit, perferendis
+					eligendi ipsam vero doloribus beatae. <br /> <br /> Lorem ipsum dolor sit amet
+					consectetur adipisicing elit. Neque quae libero id ratione magnam
+					dolorum aspernatur maiores omnis sint officiis, laboriosam eos aliquid
+					minima animi impedit, adipisci eaque nulla earum. Nostrum aut quidem
+					asperiores nesciunt, dolor veritatis. Saepe asperiores, perferendis
+					itaque beatae assumenda, laudantium natus delectus nam repellendus
+					voluptatem ullam?<br /> <br /> Lorem ipsum dolor sit amet
+					consectetur adipisicing elit. Neque quae libero id ratione magnam
+					dolorum aspernatur maiores omnis sint officiis, laboriosam eos aliquid
+					minima animi impedit, adipisci eaque nulla earum. Nostrum aut quidem
+					asperiores nesciunt, dolor veritatis. Saepe asperiores, perferendis
+					itaque beatae assumenda, laudantium natus delectus nam repellendus
+					voluptatem ullam?
+				</p>
+        <div className="lg:w-[80%] w-[90%] h-auto flex justify-start">
+        <button className="lg:w-[7rem] h-[3rem] w-[6rem] bg-[#19194D] hover:bg-blue-600 rounded-md shadow-xl text-white flex justify-center items-center">Read More</button>
+        </div>
+			</div>
+			{/* Stats Component */}
+			<div className="w-full h-[15rem] bg-[#19194D] lg:p-4 p-2">
+				<div className="w-full h-full lg:flex lg:flex-row flex-col">
+					<div
+						className="counter w-full lg:w-1/3 lg:h-full h-1/3 flex lg:flex-col gap-4 justify-center items-center text-white text-xl lg:text-3xl"
+						data-target="3500"
+					>
+						<p className="count">0</p>
+						<p>Alumni Registered</p>
+					</div>
+					<div
+						className="counter w-full lg:w-1/3 lg:h-full h-1/3 flex lg:flex-col gap-4 justify-center items-center text-white text-xl lg:text-3xl"
+						data-target="5800"
+					>
+						<p className="count">0</p>
+						<p>Alumni Registered</p>
+					</div>
+					<div
+						className="counter w-full lg:w-1/3 lg:h-full h-1/3 flex lg:flex-col gap-4 justify-center items-center text-white text-xl lg:text-3xl"
+						data-target="72000"
+					>
+						<p className="count">0</p>
+						<p>Alumni Registered</p>
+					</div>
+				</div>
+			</div>
+			{/* Benifits Offered */}
 			<div className="w-full h-auto">
 				<h1 className="text-center text-3xl font-semibold my-8 text-[#19194D]">
 					Benefits Offered
@@ -90,34 +145,6 @@ const Home = () => {
 					</div>
 				</div>
 			</div>
-			{/* Stats Component */}
-			<div className="w-full h-[15rem] bg-[#19194D] lg:p-4 p-2">
-				<div className="w-full h-full lg:flex lg:flex-row flex-col">
-					<div
-						className="counter w-full lg:w-1/3 lg:h-full h-1/3 flex lg:flex-col gap-4 justify-center items-center text-white text-xl lg:text-3xl"
-						data-target="3500"
-					>
-						<p className="count">0</p>
-						<p>Alumni Registered</p>
-					</div>
-					<div
-						className="counter w-full lg:w-1/3 lg:h-full h-1/3 flex lg:flex-col gap-4 justify-center items-center text-white text-xl lg:text-3xl"
-						data-target="5800"
-					>
-						<p className="count">0</p>
-						<p>Alumni Registered</p>
-					</div>
-					<div
-						className="counter w-full lg:w-1/3 lg:h-full h-1/3 flex lg:flex-col gap-4 justify-center items-center text-white text-xl lg:text-3xl"
-						data-target="72000"
-					>
-						<p className="count">0</p>
-						<p>Alumni Registered</p>
-					</div>
-				</div>
-			</div>
-			{/* News and articles home component */}
-			<NewsArticlesHome />
 			{/* quick access */}
 			<div className="w-full h-auto lg:h-[399px] bg-[#19194D] flex justify-center items-center py-8">
 				<div className="w-3/4 h-full flex flex-col">
@@ -141,7 +168,7 @@ const Home = () => {
 								<p>Gallery</p>
 							</div>
 
-							<div className="lg:w-[10rem] lg:h-[10rem] w-[7.5rem] h-[7.5rem] hover:w-[8rem] hover:h-[8rem] bg-[#1761A1] rounded-xl flex flex-col justify-center items-center gap-2 hover:cursor-pointer lg:hover:w-[10.5rem] lg:hover:h-[10.5rem] transition-all duration-500 ease-in-out text-white shadow-2xl">
+							<div className="lg:w-[10rem] lg:h-[10rem] w-[7.5rem] h-[7.5rem] hover:w-[8rem] hover:h-[8rem] bg-[#1761A1] rounded-xl flex flex-col justify-center items-center gap-2 hover:cursor-pointer lg:hover:w-[10.5rem] lg:hover:h-[10.5rem] transition-all duration-800 ease-in-out text-white shadow-2xl">
 								<CollectionsIcon style={{ width: "4rem", height: "4rem" }} />
 								<p>Gallery</p>
 							</div>
@@ -149,8 +176,10 @@ const Home = () => {
 					</div>
 				</div>
 			</div>
+			{/* News and articles home component */}
+			<NewsArticlesHome />
 			{/* Footer */}
-			{/* <Footer /> */}
+			<Footer />
 		</div>
 	);
 };

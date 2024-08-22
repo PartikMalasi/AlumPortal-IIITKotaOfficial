@@ -1,147 +1,198 @@
-// import React, { useState } from 'react';
-// import WestIcon from '@mui/icons-material/West';
-// import EastIcon from '@mui/icons-material/East';
+import React, { useState } from "react";
+import WestIcon from "@mui/icons-material/West";
+import EastIcon from "@mui/icons-material/East";
 
-// // News Section Component
-// const NewsSection = ({ startIndex, handlePrev, handleNext, newsItems }) => (
-//   <div className='w-full h-full flex flex-col'>
-//     <div className='w-full h-1/5 py-2 flex justify-start items-center gap-4'>
-//       <button 
-//         onClick={handlePrev} 
-//         className='w-[5rem] h-[2.5rem] lg:w-[7rem] lg:h-[3rem] bg-blue-600 hover:bg-blue-500 text-white rounded-xl'
-//         disabled={startIndex === 0} // Disable if already at the start
-//       >
-//         <WestIcon />
-//       </button>
-//       <button 
-//         onClick={handleNext} 
-//         className='w-[5rem] h-[2.5rem] lg:w-[7rem] lg:h-[3rem] bg-blue-600 hover:bg-blue-500 text-white rounded-xl'
-//         disabled={startIndex >= newsItems.length - 2} // Disable if already at the end
-//       >
-//         <EastIcon />
-//       </button>
-//     </div>
-//     <div className='w-full h-4/5 flex flex-col lg:flex-row lg:justify-evenly'>
-//       {newsItems.slice(startIndex, startIndex + 2).map((news, index) => (
-//         <div key={index} className='h-full w-full lg:w-2/5 border border-black rounded-xl flex justify-center items-center mb-4 lg:mb-0'>
-//           {news}
-//         </div>
-//       ))}
-//     </div>
-//   </div>
-// );
+const newsItems = [
+	{
+		id: 1,
+		heading: "News Heading 1",
+		content:
+			"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque qui nostrum! Consequatur sint architecto sunt atque, impedit ut quaerat quasi nesciunt similique maxime molestias ab omnis, dolores voluptas saepe!",
+		date: "2023-08-20",
+		author: "Author 1",
+	},
+	{
+		id: 2,
+		heading: "News Heading 2",
+		content:
+			"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque qui nostrum! Consequatur sint architecto sunt atque, impedit ut quaerat quasi nesciunt similique maxime molestias ab omnis, dolores voluptas saepe!",
+		date: "2023-08-19",
+		author: "Author 2",
+	},
+	{
+		id: 3,
+		heading: "News Heading 3",
+		content:
+			"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque qui nostrum! Consequatur sint architecto sunt atque, impedit ut quaerat quasi nesciunt similique maxime molestias ab omnis, dolores voluptas saepe!",
+		date: "2023-08-18",
+		author: "Author 3",
+	},
+	{
+		id: 4,
+		heading: "News Heading 4",
+		content:
+			"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque qui nostrum! Consequatur sint architecto sunt atque, impedit ut quaerat quasi nesciunt similique maxime molestias ab omnis, dolores voluptas saepe!4",
+		date: "2023-08-17",
+		author: "Author 4",
+	},
+	{
+		id: 5,
+		heading: "News Heading 5",
+		content:
+			"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque qui nostrum! Consequatur sint architecto sunt atque, impedit ut quaerat quasi nesciunt similique maxime molestias ab omnis, dolores voluptas saepe!",
+		date: "2023-08-16",
+		author: "Author 5",
+	},
+	{
+		id: 6,
+		heading: "News Heading 6",
+		content:
+			"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque qui nostrum! Consequatur sint architecto sunt atque, impedit ut quaerat quasi nesciunt similique maxime molestias ab omnis, dolores voluptas saepe!",
+		date: "2023-08-15",
+		author: "Author 6",
+	},
+	// More items...
+];
 
-// // Articles Section Component
-// const ArticlesSection = ({ startIndex, handlePrev, handleNext, articlesItems }) => (
-//   <div className='w-full h-full flex flex-col'>
-//     <div className='w-full h-1/5 py-2 flex justify-start items-center gap-4'>
-//       <button 
-//         onClick={handlePrev} 
-//         className='w-[5rem] h-[2.5rem] lg:w-[7rem] lg:h-[3rem] bg-blue-600 hover:bg-blue-500 text-white rounded-xl'
-//         disabled={startIndex === 0} // Disable if already at the start
-//       >
-//         <WestIcon />
-//       </button>
-//       <button 
-//         onClick={handleNext} 
-//         className='w-[5rem] h-[2.5rem] lg:w-[7rem] lg:h-[3rem] bg-blue-600 hover:bg-blue-500 text-white rounded-xl'
-//         disabled={startIndex >= articlesItems.length - 2} // Disable if already at the end
-//       >
-//         <EastIcon />
-//       </button>
-//     </div>
-//     <div className='w-full h-4/5 flex flex-col lg:flex-row lg:justify-evenly'>
-//       {articlesItems.slice(startIndex, startIndex + 2).map((article, index) => (
-//         <div key={index} className='h-full w-full lg:w-2/5 border border-black rounded-xl flex justify-center items-center mb-4 lg:mb-0'>
-//           {article}
-//         </div>
-//       ))}
-//     </div>
-//   </div>
-// );
-
-// // Main Component
-// const NewsArticlesHome = () => {
-//   // Dummy data for news and articles blocks
-//   const newsItems = ['News 1', 'News 2', 'News 3', 'News 4', 'News 5', 'News 6', 'News 7', 'News 8'];
-//   const articlesItems = ['Article 1', 'Article 2', 'Article 3', 'Article 4', 'Article 5', 'Article 6', 'Article 7', 'Article 8'];
-
-//   // State to track the index of the first block being displayed
-//   const [startIndex, setStartIndex] = useState(0);
-
-//   // State to track the currently displayed section
-//   const [currentSection, setCurrentSection] = useState('news');
-
-//   // Handler to go to the previous two blocks
-//   const handlePrev = () => {
-//     setStartIndex(prevIndex => Math.max(prevIndex - 2, 0));
-//   };
-
-//   // Handler to go to the next two blocks
-//   const handleNext = () => {
-//     const itemsLength = currentSection === 'news' ? newsItems.length : articlesItems.length;
-//     setStartIndex(prevIndex => Math.min(prevIndex + 2, itemsLength - 2));
-//   };
-
-//   return (
-//     <div className='w-full h-[50rem] lg:h-[40rem] border border-black p-4 flex flex-col lg:flex-row'>
-//       <div className='w-full lg:w-4/5 h-full flex flex-col'>
-//         {currentSection === 'news' ? (
-//           <NewsSection 
-//             startIndex={startIndex} 
-//             handlePrev={handlePrev} 
-//             handleNext={handleNext} 
-//             newsItems={newsItems} 
-//           />
-//         ) : (
-//           <ArticlesSection 
-//             startIndex={startIndex} 
-//             handlePrev={handlePrev} 
-//             handleNext={handleNext} 
-//             articlesItems={articlesItems} 
-//           />
-//         )}
-//       </div>
-//       <div className='w-full lg:w-1/5 h-1/5 lg:h-full flex flex-col justify-center items-center gap-4 lg:gap-8 px-4'>
-//         <button 
-//           onClick={() => { setCurrentSection('news'); setStartIndex(0); }} 
-//           className='w-full h-[2.5rem] lg:h-[3rem] bg-blue-600 hover:bg-blue-500 flex justify-center items-center text-white rounded-xl'
-//         >
-//           News
-//         </button>
-//         <button 
-//           onClick={() => { setCurrentSection('articles'); setStartIndex(0); }} 
-//           className='w-full h-[2.5rem] lg:h-[3rem] bg-blue-600 hover:bg-blue-500 flex justify-center items-center text-white rounded-xl'
-//         >
-//           Articles
-//         </button>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default NewsArticlesHome;
-
-
-import React from 'react'
-import WestIcon from '@mui/icons-material/West';
-import EastIcon from '@mui/icons-material/East';
+const announcementItems = [
+	{
+		id: 1,
+		heading: "Announcement 1",
+		content:
+			"Announcement Content 1Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque qui nostrum! Consequatur sint architecto sunt atque, impedit ut quaerat quasi nesciunt similique maxime molestias ab omnis, dolores voluptas saepe!",
+		date: "2023-08-20",
+		author: "Admin",
+	},
+	{
+		id: 2,
+		heading: "Announcement 2",
+		content:
+			"Announcement Content 2Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque qui nostrum! Consequatur sint architecto sunt atque, impedit ut quaerat quasi nesciunt similique maxime molestias ab omnis, dolores voluptas saepe!",
+		date: "2023-08-19",
+		author: "Admin",
+	},
+	{
+		id: 3,
+		heading: "Announcement 3",
+		content:
+			"Announcement Content 3Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque qui nostrum! Consequatur sint architecto sunt atque, impedit ut quaerat quasi nesciunt similique maxime molestias ab omnis, dolores voluptas saepe!",
+		date: "2023-08-18",
+		author: "Admin",
+	},
+	{
+		id: 4,
+		heading: "Announcement 4",
+		content:
+			"Announcement Content 4Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque qui nostrum! Consequatur sint architecto sunt atque, impedit ut quaerat quasi nesciunt similique maxime molestias ab omnis, dolores voluptas saepe!",
+		date: "2023-08-17",
+		author: "Admin",
+	},
+	{
+		id: 5,
+		heading: "Announcement 5",
+		content:
+			"Announcement Content 5Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque qui nostrum! Consequatur sint architecto sunt atque, impedit ut quaerat quasi nesciunt similique maxime molestias ab omnis, dolores voluptas saepe!",
+		date: "2023-08-16",
+		author: "Admin",
+	},
+	{
+		id: 6,
+		heading: "Announcement 6",
+		content:
+			"Announcement Content 6Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque qui nostrum! Consequatur sint architecto sunt atque, impedit ut quaerat quasi nesciunt similique maxime molestias ab omnis, dolores voluptas saepe!",
+		date: "2023-08-15",
+		author: "Admin",
+	},
+	// More items...
+];
 
 const NewsArticlesHome = () => {
-  return (
-    <div className='w-full h-[37rem] flex flex-col p-8'>
-        <div className='w-full h-[3rem] flex'>
-            <div className='w-[70%] h-full flex justify-start gap-4'>
-                <button className='w-2/5 h-full shadow-xl rounded-md text-center bg-[#0E407C] text-white'>Announcements</button>
-                <button className='w-2/5 h-full shadow-xl rounded-md text-center text-[#19194D]'>News</button>
-            </div>
-            <div className='w-[30%] h-full flex justify-end gap-2'>
-                <button className='w-[5rem] h-full bg-[#19194D] text-white rounded-md shadow-xl hover:bg-[#0b0b26] transition-all duration-300 ease-in-out'><WestIcon /></button>
-                <button className='w-[5rem] h-full bg-[#19194D] text-white rounded-md shadow-xl hover:bg-[#0b0b26] transition-all duration-300 ease-in-out'><EastIcon /></button>
-            </div>
-        </div>
-    </div>
-  )
-}
+	const [currentIndex, setCurrentIndex] = useState(0);
+	const [activeTab, setActiveTab] = useState("news");
 
-export default NewsArticlesHome
+	const items = activeTab === "news" ? newsItems : announcementItems;
+
+	const handleNext = () => {
+		if (currentIndex + 3 < items.length) {
+			setCurrentIndex(currentIndex + 3);
+		}
+	};
+
+	const handlePrev = () => {
+		if (currentIndex > 0) {
+			setCurrentIndex(currentIndex - 3);
+		}
+	};
+
+	const handleTabChange = (tab) => {
+		setActiveTab(tab);
+		setCurrentIndex(0);
+	};
+
+	return (
+		<div className="w-full lg:h-[37rem] h-[73rem] flex flex-col px-2 lg:px-8 py-4">
+			<div className="w-full lg:h-[3rem] h-[3rem] flex">
+				<div className="lg:w-[70%] w-[75%] h-full flex justify-start gap-4">
+					<button
+						onClick={() => handleTabChange("announcements")}
+						className={`w-2/5 h-full shadow-xl rounded-md text-center text-sm lg:text-lg ${
+							activeTab === "announcements"
+								? "bg-[#0E407C] text-white"
+								: "text-[#19194D]"
+						}`}
+					>
+						Announcements
+					</button>
+					<button
+						onClick={() => handleTabChange("news")}
+						className={`w-2/5 h-full shadow-xl rounded-md text-center text-sm lg:text-lg ${
+							activeTab === "news"
+								? "bg-[#0E407C] text-white"
+								: "text-[#19194D]"
+						}`}
+					>
+						News
+					</button>
+				</div>
+				<div className="lg:w-[30%] w-[25%] h-full flex justify-end gap-2">
+					<button
+						onClick={handlePrev}
+						className="w-[5rem] h-full bg-[#19194D] text-white rounded-md shadow-xl hover:bg-[#0b0b26] transition-all duration-300 ease-in-out"
+						disabled={currentIndex === 0}
+					>
+						<WestIcon />
+					</button>
+					<button
+						onClick={handleNext}
+						className="w-[5rem] h-full bg-[#19194D] text-white rounded-md shadow-xl hover:bg-[#0b0b26] transition-all duration-300 ease-in-out"
+						disabled={currentIndex + 3 >= items.length}
+					>
+						<EastIcon />
+					</button>
+				</div>
+			</div>
+			<div className="w-full lg:h-[34rem] h-[70rem] pt-4 flex lg:flex-row flex-col lg:justify-between justify-center lg:items-center items-stretch gap-4">
+				{items.slice(currentIndex, currentIndex + 3).map((item) => (
+					<div
+						key={item.id}
+						className="lg:h-[90%] lg:w-[30%] h-1/3 w-full rounded-md shadow-2xl hover:mb-5 hover:cursor-pointer transition-all duration-500 ease-in-out p-4 flex flex-col justify-between group"
+					>
+						<div className="font-bold text-lg group-hover:text-blue-500 transition-all duration-500 ease-in-out">
+							{item.heading}
+						</div>
+						<div className="flex-grow my-4">{item.content}</div>
+						<div className="text-sm text-gray-600">
+							<span>{item.date}</span> • <span>{item.author}</span>
+							<span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
+								{" "}
+								• <span className="hover:underline">Read More</span>
+							</span>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	);
+};
+
+export default NewsArticlesHome;
