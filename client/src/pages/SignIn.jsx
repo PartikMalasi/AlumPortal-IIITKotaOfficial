@@ -1,31 +1,22 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Logo from "../assets/iiitkotalogo.png";
 import LockIcon from "@mui/icons-material/Lock";
-import PersonIcon from "@mui/icons-material/Person";
 import EmailIcon from "@mui/icons-material/Email";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import axios from "axios";
 
 function SignIn() {
   const [formData, setFormData] = useState({
-    email: "",
+    instituteId: "",
     password: "",
   });
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate(); // Hook for navigation
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const validateFormData = () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      toast.error("Invalid email format.");
-      return false;
-    }
-    return true;
   };
 
   const handleSubmit = async (e) => {
@@ -39,7 +30,7 @@ function SignIn() {
 
     try {
       const response = await axios.post(
-        // "https://your-api-endpoint.com/api/signin",
+        "http://localhost:5000/api/auth/signin", // Update with your API endpoint
         formData,
         {
           headers: {
@@ -48,20 +39,35 @@ function SignIn() {
         }
       );
 
+      // Store the JWT token in localStorage
+      localStorage.setItem('token', response.data.token);
+
       // Reset the form data
       setFormData({
-        email: "",
+        instituteId: "",
         password: "",
       });
+
       setLoading(false);
 
       // Show success toast notification
       toast.success("Sign-in Successful");
+
+      // Redirect after 3 seconds
+      setTimeout(() => {
+        navigate('/');
+      }, 3000); // Delay of 3000ms (3 seconds)
+      
     } catch (error) {
       console.error("There was an error signing in:", error);
       setLoading(false);
       toast.error("Sign-in Failed");
     }
+  };
+
+  const validateFormData = () => {
+    // Add form validation logic if needed
+    return formData.instituteId && formData.password;
   };
 
   return (
@@ -77,11 +83,11 @@ function SignIn() {
           <div className="mb-4 flex items-center">
             <EmailIcon className="text-[#32325D] mr-2" />
             <input
-              type="email"
-              name="email"
-              value={formData.email}
+              type="text"
+              name="instituteId"
+              value={formData.instituteId}
               onChange={handleChange}
-              placeholder="Email Address"
+              placeholder="User Name"
               required
               className="w-full px-4 py-3 border border-[#0E407C] rounded-md focus:outline-none focus:border-blue-600"
             />

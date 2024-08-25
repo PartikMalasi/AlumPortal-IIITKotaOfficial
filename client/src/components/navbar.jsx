@@ -4,16 +4,16 @@ import TopLayer from "./topLayer.jsx";
 
 const Navbar = () => {
   return (
-    <div className="w-full h-auto fixed top-0 left-0 z-[1] shadow-md">
+    <div className="w-full h-auto fixed top-0 left-0 z-[10] shadow-md">
       <TopLayer />
       <div className="w-full h-[6.875rem] max-w-980:h-[90px] max-w-492:h-[70px] bg-white flex p-4">
         <div className="w-1/3 max-w-1464:w-[10%] max-w-980:w-[80%] h-full flex gap-2 items-center pl-2">
           <div className="w-auto h-full flex justify-center items-center">
-            <img
+            <a href="/"><img
               src={Logo}
               alt="iiit kota logo"
               className="w-[4.5rem] h-[4.5rem] max-w-980:w-[58px] max-w-980:h-[58px] max-w-492:h-[40px] max-w-492:w-[40px]"
-            />
+            /></a>
           </div>
           <div className="w-auto h-full flex flex-col justify-center">
             <h6
@@ -87,19 +87,12 @@ const Navbar = () => {
             </div>
           </div>
           <div className="w-1/6 h-full relative group flex  items-center text-[#19194D] max-w-980:hidden">
-            <p
+            <a href="/directory"><p
               className="text-[0.9rem] font-sans hover:cursor-pointer"
               style={{ fontWeight: "400" }}
             >
               DIRECTORY
-            </p>
-            <div className="rounded-md absolute top-12  hidden group-hover:block bg-white drop-shadow-2xl py-2 mt-2 w-[12rem]">
-              <ul classname=" w-full">
-                <li className="hover:bg-gray-200 p-2">
-                  <a href="/newsletters">Newsletters</a>
-                </li>
-              </ul>
-            </div>
+            </p></a>
           </div>
           <div className="w-1/6 h-full relative group flex  items-center text-[#19194D] max-w-980:hidden">
             <p

@@ -108,7 +108,7 @@ const announcementItems = [
 
 const NewsArticlesHome = () => {
 	const [currentIndex, setCurrentIndex] = useState(0);
-	const [activeTab, setActiveTab] = useState("news");
+	const [activeTab, setActiveTab] = useState("announcements");
 
 	const items = activeTab === "news" ? newsItems : announcementItems;
 
