@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import Navbar from '../components/Navbar.jsx'; // Ensure Navbar is properly imported
+import Navbar from '../components/navbar.jsx'; // Ensure Navbar is properly imported
 import Footer from '../components/Footer.jsx'; // Ensure Footer is properly imported
 
 const ProfilePage = () => {
