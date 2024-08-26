@@ -84,8 +84,8 @@ const Directory = () => {
         <div className="w-full h-auto p-4 flex gap-4">
           <div className="w-[20%] h-auto flex flex-col gap-4">
             <div className="mb-4">
-              <div className="text-2xl font-bold text-gray-800">Filter</div>
-              <div className="border-b-2 border-teal-500 w-16 mt-1"></div>
+              <div className="text-2xl font-bold text-gray-800">Add Filters</div>
+              <div className="border-b-2 border-teal-500 w-20 mt-1"></div>
             </div>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <input

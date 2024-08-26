@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import PersonIcon from '@mui/icons-material/Person';
+import { useNavigate } from 'react-router-dom';
 
 // Modal Component
 const Modal = ({ isOpen, onClose, imageSrc }) => {
@@ -55,6 +56,10 @@ const AlumniCard = ({ alumniData }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState('');
 
+  const handleProfileClick = () => {
+    navigate(`/profile/${alumniData._id}`); // Navigate to the profile page
+  };
+
   if (!alumniData) {
     return <div className="text-center text-gray-500">No data available</div>;
   }
@@ -82,7 +87,7 @@ const AlumniCard = ({ alumniData }) => {
                 <LinkedInIcon />
               </button>
             </a>
-            <a href={alumniData.profileUrl} target="_blank" rel="noopener noreferrer" className='w-1/2 flex justify-center'>
+            <a href={`/profile/${alumniData._id}`} target="_blank" rel="noopener noreferrer" className='w-1/2 flex justify-center'>
               <button className='flex items-center justify-center w-full h-10 bg-blue-600 hover:bg-blue-500 text-white'>
                 <PersonIcon />
               </button>

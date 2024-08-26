@@ -5,6 +5,7 @@ const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const alumniRoutes = require('./routes/alumni');
+const profileRoute = require('./routes/profileRoute'); // Ensure this is the correct path
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -25,6 +26,7 @@ mongoose.connect(MONGODB_URI, {
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/alumni', alumniRoutes);
+app.use('/api/profile', profileRoute); // Ensure profileRoute handles profile fetching
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
