@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import PersonIcon from '@mui/icons-material/Person';
 
 // Modal Component
 const Modal = ({ isOpen, onClose, imageSrc }) => {
@@ -24,18 +26,18 @@ const Modal = ({ isOpen, onClose, imageSrc }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
       <div
         ref={modalRef}
-        className="relative w-[25rem] h-[25rem] bg-transparent"
+        className="relative w-96 h-96 bg-white rounded-lg shadow-lg overflow-hidden"
       >
-        <img src={imageSrc} alt="Full size" className="w-full h-full object-contain" />
+        <img src={imageSrc} alt="Full size" className="w-full h-full object-cover" />
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 bg-white p-2 rounded-full"
+          className="absolute top-4 right-4 bg-gray-800 text-white p-2 rounded-full"
         >
           <svg
-            className="w-6 h-6 text-gray-800"
+            className="w-6 h-6"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -69,38 +71,30 @@ const AlumniCard = ({ alumniData }) => {
 
   return (
     <>
-      <div className="bg-white h-[12rem] p-3 rounded-lg shadow-md hover:shadow-xl hover:cursor-pointer transition-shadow duration-500 ease-in-out flex gap-4">
-        <div className='w-[40%] h-full flex flex-col items-center'>
-          <div className='w-full h-3/4 flex justify-center items-center'>
-            <div
-              className='w-[120px] h-[120px] border-2 border-blue-500 rounded-full overflow-hidden cursor-pointer'
-              onClick={() => openModal(alumniData.profilePicture)}
-            >
-              <img 
-                src={alumniData.profilePicture} 
-                alt="Profile" 
-                className='w-full h-full object-cover' 
-              />
-            </div>
+      <div className="bg-white h-48 p-4 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out flex gap-4">
+        <div className='w-1/3 flex flex-col items-center justify-center'>
+          <div className='w-24 h-24 border border-teal-500 rounded-full overflow-hidden flex items-center justify-center cursor-pointer shadow-md' onClick={() => openModal(alumniData.profilePicture)}>
+            <img src={alumniData.profilePicture} alt="Profile" className='w-full h-full object-cover' />
           </div>
-          <div className='w-full h-1/4 flex justify-center items-center'>
-            <a 
-              href={alumniData.linkedin} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className='w-full flex justify-center'
-            >
-              <button className='w-full py-1 px-2 rounded-md bg-blue-600 hover:bg-blue-500 text-white font-semibold'>
-                LinkedIn
+          <div className='mt-4 flex w-full'>
+            <a href={alumniData.linkedin} target="_blank" rel="noopener noreferrer" className='w-1/2 flex justify-center'>
+              <button className='flex items-center justify-center w-full h-10 bg-teal-600 hover:bg-teal-500 text-white'>
+                <LinkedInIcon />
+              </button>
+            </a>
+            <a href={alumniData.profileUrl} target="_blank" rel="noopener noreferrer" className='w-1/2 flex justify-center'>
+              <button className='flex items-center justify-center w-full h-10 bg-blue-600 hover:bg-blue-500 text-white'>
+                <PersonIcon />
               </button>
             </a>
           </div>
         </div>
-        <div className='w-[60%] h-full flex flex-col justify-center gap-2 px-2'>
-          <div className='text-lg font-bold text-gray-800'>{alumniData.name}</div>
-          <div className='text-sm text-gray-600'>{alumniData.branch}, {alumniData.graduationYear}</div>
-          <div className='text-sm text-gray-600'>{alumniData.role}</div>
-          <div className='text-sm text-gray-600'>{alumniData.currentCompany}, {alumniData.city}</div>
+        <div className='w-2/3 flex flex-col justify-center gap-1 px-4'>
+          <div className='text-xl font-semibold text-gray-800'>{alumniData.name}</div>
+          <div className='text-sm text-gray-700'>{alumniData.instituteId}</div>
+          <div className='text-sm text-gray-700'>{alumniData.branch}, {alumniData.graduationYear}</div>
+          <div className='text-sm text-gray-700'>{alumniData.role}</div>
+          <div className='text-sm text-gray-700'>{alumniData.currentCompany}, {alumniData.city}</div>
         </div>
       </div>
 
